@@ -447,6 +447,11 @@ void Geant4Output2EDM4hep::saveCollection(OutputContext<G4Event>& /*ctxt*/, G4VH
     edm4hep::SimTrackerHitCollection* sthc =
       const_cast<edm4hep::SimTrackerHitCollection*>(&m_store->get<edm4hep::SimTrackerHitCollection>(colName));
 
+    // save string encoding the readout of the sensitive detector to metadata
+    auto& colMD = store.getCollectionMetaData( sthc->getID() );
+    Geant4Sensitive* sd = coll->sensitive();
+    colMD.setValue("CellIDEncodingString", encoding(sd->sensitiveDetector()));
+
     for(unsigned i=0 ; i < nhits ; ++i){
       auto sth = sthc->create() ;
 
