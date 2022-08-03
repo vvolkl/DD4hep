@@ -933,66 +933,77 @@ SubtractionSolid::SubtractionSolid(const string& nam, const Solid& shape1, const
 /// Constructor to be used when creating a new object. Position is identity, Rotation is identity rotation
 UnionSolid::UnionSolid(const Solid& shape1, const Solid& shape2) {
   TGeoUnion* uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_identity());
+  cout<<"i am here 1!"<<endl;
   _assign(new TGeoCompositeShape("", uni), "", UNION_TAG, true);
 }
 
 /// Constructor to be used when creating a new object. Placement by a generic transformation within the mother
 UnionSolid::UnionSolid(const Solid& shape1, const Solid& shape2, const Transform3D& trans) {
   TGeoUnion* uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_transform(trans));
+  cout<<"i am here 2!"<<endl;
   _assign(new TGeoCompositeShape("", uni), "", UNION_TAG, true);
 }
 
-/// Constructor to be used when creating a new object. Placement by a generic transformation within the mother
+/// Constructor to be used when creating a new object. Placement by a generic transformation of 2 volumes [aciarma]
 UnionSolid::UnionSolid(const Solid& shape1, const Solid& shape2, const Transform3D& trans1, const Transform3D& trans2) {
   TGeoUnion* uni = new TGeoUnion(shape1, shape2, detail::matrix::_transform(trans1), detail::matrix::_transform(trans2));
+  cout<<"i am here 3!"<<endl;
   _assign(new TGeoCompositeShape("", uni), "", UNION_TAG, true);
 }
 
 /// Constructor to be used when creating a new object. Rotation is identity rotation
 UnionSolid::UnionSolid(const Solid& shape1, const Solid& shape2, const Position& pos) {
   TGeoUnion* uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_translation(pos));
+  cout<<"i am here 4!"<<endl;
   _assign(new TGeoCompositeShape("", uni), "", UNION_TAG, true);
 }
 
 /// Constructor to be used when creating a new object
 UnionSolid::UnionSolid(const Solid& shape1, const Solid& shape2, const RotationZYX& rot) {
   TGeoUnion *uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_rotationZYX(rot));
+  cout<<"i am here 5!"<<endl;
   _assign(new TGeoCompositeShape("", uni), "", UNION_TAG, true);
 }
 
 /// Constructor to be used when creating a new object
 UnionSolid::UnionSolid(const Solid& shape1, const Solid& shape2, const Rotation3D& rot) {
   TGeoUnion *uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_rotation3D(rot));
+  cout<<"i am here 6!"<<endl;
   _assign(new TGeoCompositeShape("", uni), "", UNION_TAG, true);
 }
 
 /// Constructor to be used when creating a new object. Position is identity, Rotation is identity rotation
 UnionSolid::UnionSolid(const string& nam, const Solid& shape1, const Solid& shape2) {
   TGeoUnion* uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_identity());
+  cout<<"i am here 7!"<<endl;
   _assign(new TGeoCompositeShape(nam.c_str(), uni), "", UNION_TAG, true);
 }
 
 /// Constructor to be used when creating a new object. Placement by a generic transformation within the mother
 UnionSolid::UnionSolid(const string& nam, const Solid& shape1, const Solid& shape2, const Transform3D& trans) {
   TGeoUnion* uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_transform(trans));
+  cout<<"i am here 8!"<<endl;
   _assign(new TGeoCompositeShape(nam.c_str(), uni), "", UNION_TAG, true);
 }
 
 /// Constructor to be used when creating a new object. Rotation is identity rotation
 UnionSolid::UnionSolid(const string& nam, const Solid& shape1, const Solid& shape2, const Position& pos) {
   TGeoUnion* uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_translation(pos));
+  cout<<"i am here 9 !"<<endl;
   _assign(new TGeoCompositeShape(nam.c_str(), uni), "", UNION_TAG, true);
 }
 
 /// Constructor to be used when creating a new object
 UnionSolid::UnionSolid(const string& nam, const Solid& shape1, const Solid& shape2, const RotationZYX& rot) {
   TGeoUnion *uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_rotationZYX(rot));
+  cout<<"i am here 10!"<<endl;
   _assign(new TGeoCompositeShape(nam.c_str(), uni), "", UNION_TAG, true);
 }
 
 /// Constructor to be used when creating a new object
 UnionSolid::UnionSolid(const string& nam, const Solid& shape1, const Solid& shape2, const Rotation3D& rot) {
   TGeoUnion *uni = new TGeoUnion(shape1, shape2, detail::matrix::_identity(), detail::matrix::_rotation3D(rot));
+  cout<<"i am here 11!"<<endl;
   _assign(new TGeoCompositeShape(nam.c_str(), uni), "", UNION_TAG, true);
 }
 

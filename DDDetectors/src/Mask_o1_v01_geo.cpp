@@ -135,7 +135,7 @@ static Ref_t create_detector(Detector& description,
     const double mirrorAngle = M_PI - rotateAngle; // for the "mirrored" placement at -z
     // the "mirroring" in fact is done by a rotation of (almost) 180 degrees around the y-axis
 
-    Solid temptempFinalSolid;
+    Solid temptempFinalSolid, t1solid, t2solid;
     
     switch (crossType) {
     case ODH::kCenter:
@@ -156,9 +156,11 @@ static Ref_t create_detector(Detector& description,
       
       ConeSegment tubeSolid0( zHalf, rInnerStart, rOuterStart, rInnerEnd, rOuterEnd , phi1, phi2);
       ConeSegment tubeSolid1( zHalf, rInnerStart, rOuterStart, rInnerEnd, rOuterEnd , phi1, phi2);
+      ConeSegment fakesolid(  0.1, 0,0,0,0,phi1,phi2);  //ugly ugly solution
+      t2solid = UnionSolid( fakesolid, tubeSolid0,transformer);
+      temptempFinalSolid = UnionSolid(t2solid, tubeSolid1, transmirror);
+      // temptempFinalSolid = UnionSolid( tubeSolid0, tubeSolid1, transmirror, transformer);
       
-      temptempFinalSolid = UnionSolid( tubeSolid0, tubeSolid1, transformer, transmirror);
-
     }
       break;
 
